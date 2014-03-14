@@ -9,7 +9,7 @@
   caption: "売上伝票",
   font: {name:"mincho"},
   custom_fields: [
-    {key:"suryo",exp:"(* .irisu .hakosu (nvl (if (= .uriageKubun 0) 1) (if (= .uriageKubun 1) -1)))"},
+    {key:"suryo",exp:"(* .irisu .hakosu (if (= .uriageKubun 0) 1 -1))"},
     {key:"kingaku",exp:"(* .suryo .tanka)"},
     {key:"genkagaku",exp:"(* .suryo .genka)"}
   ],
@@ -29,6 +29,7 @@
       },
       {
         aggregate_src: true,
+        caption: "レポートボディ",
         group: {
           caption: "伝票グループ",
           keys: ["denpyoNo"],
@@ -88,6 +89,7 @@
             },
             {
               aggregate_src: true,
+              caption: "伝票ボディ",
               group: {
                 caption: "明細グループ",
                 detail: true,
@@ -100,7 +102,7 @@
                     caption: "明細",
                     elements: [
                       {type:"line",layout:{x1:0.0,y1:30.0,x2:802.0,y2:30.0},line_style:"dot",visibility_cond:"(! state.last)"},
-                      {type:"field",layout:{x1:0.0,y1:0.0,x2:80.0,y2:10.0},exp:"(& .uriageKubun ': ' (nvl (if (= .uriageKubun 0) '売上') (if (= .uriageKubun 1) '返品')))",halign:"left",mock:"s10",valign:"top"},
+                      {type:"field",layout:{x1:0.0,y1:0.0,x2:80.0,y2:10.0},exp:"(& .uriageKubun ': ' (if (= .uriageKubun 0) '売上' '返品'))",halign:"left",mock:"s10",valign:"top"},
                       {type:"field",layout:{x1:80.0,y1:0.0,x2:160.0,y2:10.0},exp:".shohinCode",halign:"left",mock:"s10",valign:"top"},
                       {type:"field",layout:{x1:80.0,y1:10.0,x2:320.0,y2:20.0},exp:".shohinName",halign:"left",mock:"w20",valign:"top"},
                       {type:"field",layout:{x1:320.0,y1:10.0,x2:400.0,y2:20.0},exp:".irisu",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
