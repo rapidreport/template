@@ -1,0 +1,244 @@
+{
+  version: 0,
+  paper: {
+    margin: {bottom:20.0,left:20.0,right:20.0,top:20.0},
+    scale_unit: "point",
+    type: "a4"
+  },
+  caption: "納品書",
+  font: {name:"mincho"},
+  custom_fields: [
+    {key:"kingaku",exp:"(* .irisu .hakosu .tanka)"},
+    {key:"zei",exp:"(rounddown (* .kingaku 0.05))"}
+  ],
+  group: {
+    caption: "納品書グループ",
+    keys: ["denpyoNo"],
+    contents: [
+      {
+        aggregate_src: true,
+        caption: "納品書（控）",
+        elements: [
+          {id:"__trial__",type:"text",layout:{y2:10},background:true,color:"silver",text:"RapidReport評価版 http://rapidreport.systembase.co.jp/"}
+        ],
+        group: {
+          caption: "納品書（控）グループ",
+          contents: [
+            {
+              size: {
+                initial: 175.0
+              },
+              caption: "ヘッダー",
+              every_page: true,
+              elements: [
+                {type:"text",layout:{x1:240.0,y1:5.0,x2:390.0,y2:30.0},caption:"納品書（控）",font:{name:"mincho",size:20.0},halign:"left",text:"納品書（控）",valign:"center"},
+                {type:"text",layout:{x1:455.0,y1:5.0,x2:495.0,y2:15.0},caption:"伝票No.",text:"伝票No.",valign:"center"},
+                {type:"field",layout:{x1:495.0,y1:5.0,x2:540.0,y2:15.0},caption:"伝票番号",exp:".denpyoNo",formatter:{format:"00000000",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"0000000000"},
+                {type:"field",layout:{x1:455.0,y1:15.0,x2:540.0,y2:25.0},caption:"伝票日付",exp:".denpyoDate",formatter:{format:"yyyy年MM月dd日",type:"default"},halign:"right",mock:"t",valign:"center",xls_format:"yyyy年mm月dd日"},
+                {type:"field",layout:{x1:30.0,y1:35.0,x2:240.0,y2:55.0},caption:"取引き先名",exp:"(& .torihikisakiName ' 様')",font:{name:"mincho",size:12.0,underline:true},mock:"w20",valign:"center"},
+                {type:"field",layout:{x1:30.0,y1:60.0,x2:240.0,y2:70.0},caption:"取引き先郵便番号",exp:".torihikisakiYubinCode",font:{name:"mincho"},mock:"s8",valign:"center"},
+                {type:"field",layout:{x1:30.0,y1:75.0,x2:240.0,y2:85.0},caption:"取引き先住所",exp:".torihikisakiJusho",font:{name:"mincho"},mock:"w20",valign:"center"},
+                {type:"text",layout:{x1:30.0,y1:90.0,x2:70.0,y2:100.0},caption:"TEL",text:"TEL",valign:"center"},
+                {type:"field",layout:{x1:70.0,y1:90.0,x2:180.0,y2:100.0},caption:"取引き先電話番号",exp:".torihikisakiTel",font:{name:"mincho"},mock:"s20",valign:"center"},
+                {type:"text",layout:{x1:30.0,y1:135.0,x2:100.0,y2:145.0},caption:"お客様コード",text:"お客様コード",valign:"center"},
+                {type:"field",layout:{x1:100.0,y1:135.0,x2:130.0,y2:145.0},caption:"取引き先コード",exp:".torihikisakiCode",formatter:{format:"0000",type:"default"},halign:"right",mock:"d4",valign:"center",xls_format:"0000000000"},
+                {type:"field",layout:{x1:330.0,y1:45.0,x2:540.0,y2:55.0},caption:"自社名",exp:"global.kaishaName",font:{name:"mincho"},mock:"w20",valign:"center"},
+                {type:"field",layout:{x1:330.0,y1:60.0,x2:540.0,y2:70.0},caption:"自社郵便番号",exp:"global.kaishaYubinCode",font:{name:"mincho"},mock:"s8",valign:"center"},
+                {type:"field",layout:{x1:330.0,y1:75.0,x2:540.0,y2:85.0},caption:"自社住所",exp:"global.kaishaJusho",font:{name:"mincho"},mock:"w20",valign:"center"},
+                {type:"text",layout:{x1:330.0,y1:90.0,x2:370.0,y2:100.0},caption:"TEL",text:"TEL",valign:"center"},
+                {type:"field",layout:{x1:370.0,y1:90.0,x2:480.0,y2:100.0},caption:"自社電話番号",exp:"global.kaishaTel",font:{name:"mincho"},mock:"s20",valign:"center"},
+                {type:"field",layout:{x1:370.0,y1:105.0,x2:480.0,y2:115.0},caption:"自社担当者名",exp:".tantoName",font:{name:"mincho"},mock:"w10",valign:"center"},
+                {type:"text",layout:{x1:330.0,y1:105.0,x2:370.0,y2:115.0},caption:"担当者",text:"担当者",valign:"center"},
+                {type:"field",layout:{x1:290.0,y1:135.0,x2:540.0,y2:145.0},caption:"納品書メモ",exp:"global.nohinMemo",font:{name:"mincho",size:8.0},mock:"w30",valign:"center"},
+                {type:"rect",layout:{x1:30.0,y1:150.0,x2:555.0,y2:175.0},fill_color:"lavender",hide_bottom:true,round:6.0},
+                {type:"line",layout:{x1:200.0,y1:150.0,x2:200.0,y2:175.0}},
+                {type:"line",layout:{x1:270.0,y1:150.0,x2:270.0,y2:175.0}},
+                {type:"line",layout:{x1:330.0,y1:150.0,x2:330.0,y2:175.0}},
+                {type:"line",layout:{x1:360.0,y1:150.0,x2:360.0,y2:175.0}},
+                {type:"line",layout:{x1:420.0,y1:150.0,x2:420.0,y2:175.0}},
+                {type:"line",layout:{x1:490.0,y1:150.0,x2:490.0,y2:175.0}},
+                {type:"text",layout:{x1:35.0,y1:150.0,x2:195.0,y2:175.0},caption:"コード・品名",halign:"center",text:"コード・商品名",valign:"center"},
+                {type:"text",layout:{x1:205.0,y1:150.0,x2:265.0,y2:175.0},caption:"入数・箱数",halign:"center",text:"入数・箱数",valign:"center"},
+                {type:"text",layout:{x1:275.0,y1:150.0,x2:325.0,y2:175.0},caption:"数量",halign:"center",text:"数量",valign:"center"},
+                {type:"text",layout:{x1:330.0,y1:150.0,x2:360.0,y2:175.0},caption:"単位",halign:"center",text:"単位",valign:"center"},
+                {type:"text",layout:{x1:365.0,y1:150.0,x2:415.0,y2:175.0},caption:"単価",halign:"center",text:"単価",valign:"center"},
+                {type:"text",layout:{x1:425.0,y1:150.0,x2:485.0,y2:175.0},caption:"金額",halign:"center",text:"金額",valign:"center"},
+                {type:"text",layout:{x1:495.0,y1:150.0,x2:555.0,y2:175.0},caption:"備考",halign:"center",text:"備考",valign:"center"}
+              ]
+            },
+            {
+              aggregate_src: true,
+              caption: "ボディ",
+              elements: [
+                {type:"rect",layout:{x1:30.0,y1:0.0,x2:555.0,y2:125.0},hide_top:true,round:6.0}
+              ],
+              group: {
+                id: "meisai",
+                caption: "明細グループ",
+                detail: true,
+                layout: {
+                  max_count: 5.0,
+                  blank: true
+                },
+                contents: [
+                  {
+                    size: {
+                      initial: 25.0
+                    },
+                    aggregate_src: true,
+                    caption: "明細",
+                    elements: [
+                      {type:"field",layout:{x1:35.0,y1:5.0,x2:115.0,y2:15.0},caption:"商品コード",exp:".shohinCode",mock:"s10",valign:"center"},
+                      {type:"field",layout:{x1:35.0,y1:15.0,x2:195.0,y2:25.0},caption:"商品名",exp:".shohinName",mock:"w20",valign:"center"},
+                      {type:"text",layout:{x1:35.0,y1:0.0,x2:80.0,y2:25.0},caption:"以下余白",text:"以下余白",valign:"center",visibility_cond:"state.blank_first"},
+                      {type:"field",layout:{x1:200.0,y1:5.0,x2:270.0,y2:15.0},caption:"入数",exp:".irisu",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,##0"},
+                      {type:"field",layout:{x1:200.0,y1:15.0,x2:270.0,y2:25.0},caption:"箱数",exp:".hakosu",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,##0"},
+                      {type:"field",layout:{x1:270.0,y1:0.0,x2:330.0,y2:25.0},caption:"数量",exp:"(* .irisu .hakosu)",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,##0"},
+                      {type:"field",layout:{x1:330.0,y1:0.0,x2:360.0,y2:25.0},caption:"単位",exp:".tani",halign:"center",mock:"w3",valign:"center"},
+                      {type:"field",layout:{x1:365.0,y1:0.0,x2:420.0,y2:25.0},caption:"単価",exp:".tanka",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,##0"},
+                      {type:"field",layout:{x1:425.0,y1:0.0,x2:490.0,y2:25.0},caption:"金額",exp:".kingaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,##0"},
+                      {type:"field",layout:{x1:495.0,y1:0.0,x2:555.0,y2:25.0},caption:"備考",exp:".biko",mock:"w6",valign:"center"},
+                      {type:"line",layout:{x1:200.0,y1:0.0,x2:200.0,y2:25.0}},
+                      {type:"line",layout:{x1:270.0,y1:0.0,x2:270.0,y2:25.0}},
+                      {type:"line",layout:{x1:330.0,y1:0.0,x2:330.0,y2:25.0}},
+                      {type:"line",layout:{x1:360.0,y1:0.0,x2:360.0,y2:25.0}},
+                      {type:"line",layout:{x1:420.0,y1:0.0,x2:420.0,y2:25.0}},
+                      {type:"line",layout:{x1:490.0,y1:0.0,x2:490.0,y2:25.0}},
+                      {type:"line",layout:{x1:30.0,y1:0.0,x2:555.0,y2:0.0}}
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              size: {
+                initial: 382.0,
+                rev_initial: true
+              },
+              caption: "フッター",
+              elements: [
+                {type:"rect",layout:{x1:360.0,y1:0.0,x2:420.0,y2:25.0},fill_color:"azure",hide_right:true,hide_top:true,round:6.0},
+                {type:"text",layout:{x1:365.0,y1:0.0,x2:415.0,y2:25.0},caption:"合計",halign:"center",text:"合計",valign:"center"},
+                {type:"field",layout:{x1:425.0,y1:0.0,x2:490.0,y2:25.0},caption:"合計金額",exp:"(+ sum.kingaku sum.zei)",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,##0"},
+                {type:"rect",layout:{x1:475.0,y1:35.0,x2:515.0,y2:75.0}},
+                {type:"rect",layout:{x1:515.0,y1:35.0,x2:555.0,y2:75.0}},
+                {type:"rect",layout:{x1:420.0,y1:0.0,x2:490.0,y2:25.0},hide_left:true,hide_top:true,round:6.0},
+                {type:"rect",layout:{x1:360.0,y1:0.0,x2:420.0,y2:25.0},hide_bottom:true,hide_left:true}
+              ]
+            }
+          ]
+        }
+      },
+      {
+        size: {
+          initial: 382.0
+        },
+        caption: "納品書（正）",
+        group: {
+          caption: "納品書（正）グループ",
+          contents: [
+            {
+              size: {
+                initial: 175.0
+              },
+              caption: "ヘッダー",
+              elements: [
+                {type:"text",layout:{x1:240.0,y1:5.0,x2:390.0,y2:30.0},caption:"納品書（控）",font:{name:"mincho",size:20.0},halign:"left",text:"納品書",valign:"center"},
+                {type:"text",layout:{x1:455.0,y1:5.0,x2:495.0,y2:15.0},caption:"伝票No.",text:"伝票No.",valign:"center"},
+                {type:"field",layout:{x1:495.0,y1:5.0,x2:540.0,y2:15.0},caption:"伝票番号",exp:".denpyoNo",formatter:{format:"00000000",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"0000000000"},
+                {type:"field",layout:{x1:455.0,y1:15.0,x2:540.0,y2:25.0},caption:"伝票日付",exp:".denpyoDate",formatter:{format:"yyyy年MM月dd日",type:"default"},halign:"right",mock:"t",valign:"center",xls_format:"yyyy年mm月dd日"},
+                {type:"field",layout:{x1:30.0,y1:35.0,x2:240.0,y2:55.0},caption:"取引き先名",exp:"(& .torihikisakiName ' 様')",font:{name:"mincho",size:12.0,underline:true},mock:"w20",valign:"center"},
+                {type:"field",layout:{x1:30.0,y1:60.0,x2:240.0,y2:70.0},caption:"取引き先郵便番号",exp:".torihikisakiYubinCode",font:{name:"mincho"},mock:"s8",valign:"center"},
+                {type:"field",layout:{x1:30.0,y1:75.0,x2:240.0,y2:85.0},caption:"取引き先住所",exp:".torihikisakiJusho",font:{name:"mincho"},mock:"w20",valign:"center"},
+                {type:"text",layout:{x1:30.0,y1:90.0,x2:70.0,y2:100.0},caption:"TEL",text:"TEL",valign:"center"},
+                {type:"field",layout:{x1:70.0,y1:90.0,x2:180.0,y2:100.0},caption:"取引き先電話番号",exp:".torihikisakiTel",font:{name:"mincho"},mock:"s20",valign:"center"},
+                {type:"text",layout:{x1:30.0,y1:135.0,x2:100.0,y2:145.0},caption:"お客様コード",text:"お客様コード",valign:"center"},
+                {type:"field",layout:{x1:100.0,y1:135.0,x2:130.0,y2:145.0},caption:"取引き先コード",exp:".torihikisakiCode",formatter:{format:"0000",type:"default"},halign:"right",mock:"d4",valign:"center",xls_format:"0000000000"},
+                {type:"field",layout:{x1:330.0,y1:45.0,x2:540.0,y2:55.0},caption:"自社名",exp:"global.kaishaName",font:{name:"mincho"},mock:"w20",valign:"center"},
+                {type:"field",layout:{x1:330.0,y1:60.0,x2:540.0,y2:70.0},caption:"自社郵便番号",exp:"global.kaishaYubinCode",font:{name:"mincho"},mock:"s8",valign:"center"},
+                {type:"field",layout:{x1:330.0,y1:75.0,x2:540.0,y2:85.0},caption:"自社住所",exp:"global.kaishaJusho",font:{name:"mincho"},mock:"w20",valign:"center"},
+                {type:"text",layout:{x1:330.0,y1:90.0,x2:370.0,y2:100.0},caption:"TEL",text:"TEL",valign:"center"},
+                {type:"field",layout:{x1:370.0,y1:90.0,x2:480.0,y2:100.0},caption:"自社電話番号",exp:"global.kaishaTel",font:{name:"mincho"},mock:"s20",valign:"center"},
+                {type:"field",layout:{x1:370.0,y1:105.0,x2:480.0,y2:115.0},caption:"自社担当者名",exp:".tantoName",font:{name:"mincho"},mock:"w10",valign:"center"},
+                {type:"text",layout:{x1:330.0,y1:105.0,x2:370.0,y2:115.0},caption:"担当者",text:"担当者",valign:"center"},
+                {type:"field",layout:{x1:290.0,y1:135.0,x2:540.0,y2:145.0},caption:"納品書メモ",exp:"global.nohinMemo",font:{name:"mincho",size:8.0},mock:"w30",valign:"center"},
+                {type:"rect",layout:{x1:30.0,y1:150.0,x2:555.0,y2:175.0},fill_color:"lavender",hide_bottom:true,round:6.0},
+                {type:"line",layout:{x1:200.0,y1:150.0,x2:200.0,y2:175.0}},
+                {type:"line",layout:{x1:270.0,y1:150.0,x2:270.0,y2:175.0}},
+                {type:"line",layout:{x1:330.0,y1:150.0,x2:330.0,y2:175.0}},
+                {type:"line",layout:{x1:360.0,y1:150.0,x2:360.0,y2:175.0}},
+                {type:"line",layout:{x1:420.0,y1:150.0,x2:420.0,y2:175.0}},
+                {type:"line",layout:{x1:490.0,y1:150.0,x2:490.0,y2:175.0}},
+                {type:"text",layout:{x1:35.0,y1:150.0,x2:195.0,y2:175.0},caption:"コード・品名",halign:"center",text:"コード・商品名",valign:"center"},
+                {type:"text",layout:{x1:205.0,y1:150.0,x2:265.0,y2:175.0},caption:"入数・箱数",halign:"center",text:"入数・箱数",valign:"center"},
+                {type:"text",layout:{x1:275.0,y1:150.0,x2:325.0,y2:175.0},caption:"数量",halign:"center",text:"数量",valign:"center"},
+                {type:"text",layout:{x1:330.0,y1:150.0,x2:360.0,y2:175.0},caption:"単位",halign:"center",text:"単位",valign:"center"},
+                {type:"text",layout:{x1:365.0,y1:150.0,x2:415.0,y2:175.0},caption:"単価",halign:"center",text:"単価",valign:"center"},
+                {type:"text",layout:{x1:425.0,y1:150.0,x2:485.0,y2:175.0},caption:"金額",halign:"center",text:"金額",valign:"center"},
+                {type:"text",layout:{x1:495.0,y1:150.0,x2:555.0,y2:175.0},caption:"備考",halign:"center",text:"備考",valign:"center"}
+              ]
+            },
+            {
+              aggregate_src: true,
+              caption: "ボディ",
+              elements: [
+                {type:"rect",layout:{x1:30.0,y1:0.0,x2:555.0,y2:0.0,rev_y2:true},hide_top:true,round:6.0}
+              ],
+              group: {
+                caption: "明細グループ",
+                detail: true,
+                layout: {
+                  max_count: 5.0,
+                  blank: true
+                },
+                contents: [
+                  {
+                    size: {
+                      initial: 25.0
+                    },
+                    aggregate_src: true,
+                    caption: "明細",
+                    elements: [
+                      {type:"field",layout:{x1:35.0,y1:5.0,x2:115.0,y2:15.0},caption:"商品コード",exp:".shohinCode",mock:"s10",valign:"center"},
+                      {type:"field",layout:{x1:35.0,y1:15.0,x2:195.0,y2:25.0},caption:"商品名",exp:".shohinName",mock:"w20",valign:"center"},
+                      {type:"text",layout:{x1:35.0,y1:0.0,x2:80.0,y2:20.0},caption:"以下余白",text:"以下余白",valign:"center",visibility_cond:"state.blank_first"},
+                      {type:"field",layout:{x1:200.0,y1:5.0,x2:270.0,y2:15.0},caption:"入数",exp:".irisu",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,##0"},
+                      {type:"field",layout:{x1:200.0,y1:15.0,x2:270.0,y2:25.0},caption:"箱数",exp:".hakosu",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,##0"},
+                      {type:"field",layout:{x1:270.0,y1:0.0,x2:330.0,y2:25.0},caption:"数量",exp:"(* .irisu .hakosu)",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,##0"},
+                      {type:"field",layout:{x1:330.0,y1:0.0,x2:360.0,y2:25.0},caption:"単位",exp:".tani",halign:"center",mock:"w3",valign:"center"},
+                      {type:"field",layout:{x1:365.0,y1:0.0,x2:420.0,y2:25.0},caption:"単価",exp:".tanka",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,##0"},
+                      {type:"field",layout:{x1:425.0,y1:0.0,x2:490.0,y2:25.0},caption:"金額",exp:".kingaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,##0"},
+                      {type:"field",layout:{x1:495.0,y1:0.0,x2:555.0,y2:25.0},caption:"備考",exp:".biko",mock:"w6",valign:"center"},
+                      {type:"line",layout:{x1:200.0,y1:0.0,x2:200.0,y2:25.0}},
+                      {type:"line",layout:{x1:270.0,y1:0.0,x2:270.0,y2:25.0}},
+                      {type:"line",layout:{x1:330.0,y1:0.0,x2:330.0,y2:25.0}},
+                      {type:"line",layout:{x1:360.0,y1:0.0,x2:360.0,y2:25.0}},
+                      {type:"line",layout:{x1:420.0,y1:0.0,x2:420.0,y2:25.0}},
+                      {type:"line",layout:{x1:490.0,y1:0.0,x2:490.0,y2:25.0}},
+                      {type:"line",layout:{x1:30.0,y1:0.0,x2:555.0,y2:0.0}}
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              size: {
+                initial: 75.0
+              },
+              caption: "フッター",
+              elements: [
+                {type:"rect",layout:{x1:360.0,y1:0.0,x2:420.0,y2:25.0},fill_color:"azure",hide_right:true,hide_top:true,round:6.0},
+                {type:"text",layout:{x1:365.0,y1:0.0,x2:415.0,y2:25.0},caption:"合計",halign:"center",text:"合計",valign:"center"},
+                {type:"field",layout:{x1:425.0,y1:0.0,x2:490.0,y2:25.0},caption:"合計金額",exp:"(+ sum.kingaku sum.zei)",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,##0"},
+                {type:"rect",layout:{x1:475.0,y1:35.0,x2:515.0,y2:75.0}},
+                {type:"rect",layout:{x1:515.0,y1:35.0,x2:555.0,y2:75.0}},
+                {type:"rect",layout:{x1:420.0,y1:0.0,x2:490.0,y2:25.0},hide_left:true,hide_top:true,round:6.0},
+                {type:"rect",layout:{x1:360.0,y1:0.0,x2:420.0,y2:25.0},hide_bottom:true,hide_left:true}
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
