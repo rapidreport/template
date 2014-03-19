@@ -9,7 +9,7 @@
   caption: "売上伝票",
   font: {name:"mincho"},
   custom_fields: [
-    {key:"suryo",exp:"(* .irisu .hakosu (if (= .uriageKubun 0) 1 -1))"},
+    {key:"suryo",exp:"(if (= .uriageKubun 0) (* .irisu .hakosu) (- .henpinSuryo))"},
     {key:"kingaku",exp:"(* .suryo .tanka)"},
     {key:"genkagaku",exp:"(* .suryo .genka)"}
   ],
@@ -23,8 +23,8 @@
         every_page: true,
         elements: [
           {type:"text",layout:{x1:295.0,y1:0.0,x2:505.0,y2:20.0},distribute:true,font:{name:"mincho",size:20.0,underline:true},text:"売上伝票"},
-          {type:"field",layout:{x1:0.0,y1:35.0,x2:210.0,y2:45.0},exp:"global.kaishaName",halign:"left",mock:"w20",valign:"top"},
-          {type:"text",layout:{x1:627.0,y1:35.0,x2:802.0,y2:45.0},halign:"right",text:"PAGE: #{page_count}/#{page_count.total}",valign:"top"}
+          {type:"field",layout:{x1:0.0,y1:35.0,x2:210.0,y2:45.0},caption:"会社名",exp:"global.kaishaName",halign:"left",mock:"w20",valign:"top"},
+          {type:"text",layout:{x1:627.0,y1:35.0,x2:802.0,y2:45.0},caption:"ページ数",halign:"right",text:"ページ: #{page_count}/#{page_count.total}",valign:"top"}
         ]
       },
       {
@@ -43,24 +43,24 @@
               },
               caption: "伝票ヘッダ１",
               elements: [
-                {type:"line",layout:{x1:0.0,y1:0.0,x2:802.0,y2:0.0}},
+                {type:"line",layout:{x1:0.0,y1:0.0,x2:802.0,y2:0.0},background:true},
                 {type:"text",layout:{x1:0.0,y1:0.0,x2:80.0,y2:10.0},text:"売上日付",valign:"top"},
-                {type:"text",layout:{x1:0.0,y1:10.0,x2:80.0,y2:20.0},text:"得意先",valign:"top"},
-                {type:"text",layout:{x1:0.0,y1:20.0,x2:80.0,y2:30.0},text:"得意先担当者",valign:"top"},
-                {type:"text",layout:{x1:0.0,y1:30.0,x2:80.0,y2:40.0},text:"部門",valign:"top"},
-                {type:"text",layout:{x1:0.0,y1:40.0,x2:80.0,y2:50.0},text:"担当者",valign:"top"},
-                {type:"field",layout:{x1:80.0,y1:0.0,x2:170.0,y2:10.0},exp:".uriageDate",formatter:{format:"yyyy年MM月dd日",type:"default"},mock:"t",valign:"top"},
+                {type:"field",layout:{x1:80.0,y1:0.0,x2:170.0,y2:10.0},caption:"売上日付",exp:".uriageDate",formatter:{format:"yyyy年MM月dd日",type:"default"},mock:"t",valign:"top"},
                 {type:"text",layout:{x1:170.0,y1:0.0,x2:230.0,y2:10.0},text:"請求日付",valign:"top"},
-                {type:"field",layout:{x1:230.0,y1:0.0,x2:320.0,y2:10.0},exp:".seikyuDate",formatter:{format:"yyyy年MM月dd日",type:"default"},mock:"t",valign:"top"},
+                {type:"field",layout:{x1:230.0,y1:0.0,x2:320.0,y2:10.0},caption:"請求日付",exp:".seikyuDate",formatter:{format:"yyyy年MM月dd日",type:"default"},mock:"t",valign:"top"},
                 {type:"text",layout:{x1:320.0,y1:0.0,x2:365.0,y2:10.0},text:"伝票No.",valign:"top"},
-                {type:"field",layout:{x1:365.0,y1:0.0,x2:400.0,y2:10.0},exp:".denpyoNo",formatter:{format:"0000",type:"default"},mock:"d4",valign:"top"},
+                {type:"field",layout:{x1:365.0,y1:0.0,x2:400.0,y2:10.0},caption:"伝票No",exp:".denpyoNo",formatter:{format:"0000",type:"default"},mock:"d4",valign:"top"},
                 {type:"text",layout:{x1:400.0,y1:0.0,x2:445.0,y2:10.0},text:"受注No.",valign:"top"},
-                {type:"field",layout:{x1:445.0,y1:0.0,x2:480.0,y2:10.0},exp:".juchuNo",formatter:{format:"0000",type:"default"},mock:"d4",valign:"center"},
+                {type:"field",layout:{x1:445.0,y1:0.0,x2:480.0,y2:10.0},caption:"受注No",exp:".juchuNo",formatter:{format:"0000",type:"default"},mock:"d4",valign:"center"},
+                {type:"text",layout:{x1:0.0,y1:10.0,x2:80.0,y2:20.0},text:"得意先",valign:"top"},
                 {type:"field",layout:{x1:80.0,y1:10.0,x2:110.0,y2:20.0},exp:".tokuisakiCode",formatter:{format:"0000",type:"default"},mock:"d4",valign:"top"},
                 {type:"field",layout:{x1:110.0,y1:10.0,x2:320.0,y2:20.0},exp:".tokuisakiName",halign:"left",mock:"w20",valign:"top"},
+                {type:"text",layout:{x1:0.0,y1:20.0,x2:80.0,y2:30.0},text:"得意先担当者",valign:"top"},
                 {type:"field",layout:{x1:80.0,y1:20.0,x2:190.0,y2:30.0},exp:".tokuisakiTanto",halign:"left",mock:"w10",valign:"top"},
+                {type:"text",layout:{x1:0.0,y1:30.0,x2:80.0,y2:40.0},text:"部門",valign:"top"},
                 {type:"field",layout:{x1:80.0,y1:30.0,x2:110.0,y2:40.0},exp:".bumonCode",formatter:{format:"0000",type:"default"},mock:"d4",valign:"top"},
                 {type:"field",layout:{x1:110.0,y1:30.0,x2:320.0,y2:40.0},exp:".bumonName",halign:"left",mock:"w20",valign:"top"},
+                {type:"text",layout:{x1:0.0,y1:40.0,x2:80.0,y2:50.0},text:"担当者",valign:"top"},
                 {type:"field",layout:{x1:80.0,y1:40.0,x2:110.0,y2:50.0},exp:".tantoCode",formatter:{format:"0000",type:"default"},mock:"d4",valign:"top"},
                 {type:"field",layout:{x1:110.0,y1:40.0,x2:220.0,y2:50.0},exp:".tantoName",halign:"left",mock:"w10",valign:"top"}
               ]
@@ -81,10 +81,10 @@
                 {type:"text",layout:{x1:400.0,y1:10.0,x2:480.0,y2:20.0},halign:"right",text:"箱数",valign:"top"},
                 {type:"text",layout:{x1:400.0,y1:20.0,x2:480.0,y2:30.0},halign:"right",text:"数量",valign:"top"},
                 {type:"text",layout:{x1:480.0,y1:20.0,x2:560.0,y2:30.0},halign:"left",text:"単位",valign:"top"},
-                {type:"text",layout:{x1:560.0,y1:20.0,x2:640.0,y2:30.0},halign:"right",text:"単価",valign:"top"},
                 {type:"text",layout:{x1:560.0,y1:10.0,x2:640.0,y2:20.0},halign:"right",text:"単位原価",valign:"top"},
-                {type:"text",layout:{x1:640.0,y1:20.0,x2:720.0,y2:30.0},halign:"right",text:"金額",valign:"top"},
-                {type:"text",layout:{x1:640.0,y1:10.0,x2:720.0,y2:20.0},halign:"right",text:"原価",valign:"top"}
+                {type:"text",layout:{x1:560.0,y1:20.0,x2:640.0,y2:30.0},halign:"right",text:"単価",valign:"top"},
+                {type:"text",layout:{x1:640.0,y1:10.0,x2:720.0,y2:20.0},halign:"right",text:"原価",valign:"top"},
+                {type:"text",layout:{x1:640.0,y1:20.0,x2:720.0,y2:30.0},halign:"right",text:"金額",valign:"top"}
               ]
             },
             {
@@ -101,18 +101,18 @@
                     aggregate_src: true,
                     caption: "明細",
                     elements: [
-                      {type:"line",layout:{x1:0.0,y1:30.0,x2:802.0,y2:30.0},line_style:"dot",visibility_cond:"(! state.last)"},
-                      {type:"field",layout:{x1:0.0,y1:0.0,x2:80.0,y2:10.0},exp:"(& .uriageKubun ': ' (if (= .uriageKubun 0) '売上' '返品'))",halign:"left",mock:"s10",valign:"top"},
-                      {type:"field",layout:{x1:80.0,y1:0.0,x2:160.0,y2:10.0},exp:".shohinCode",halign:"left",mock:"s10",valign:"top"},
-                      {type:"field",layout:{x1:80.0,y1:10.0,x2:320.0,y2:20.0},exp:".shohinName",halign:"left",mock:"w20",valign:"top"},
-                      {type:"field",layout:{x1:320.0,y1:10.0,x2:400.0,y2:20.0},exp:".irisu",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
-                      {type:"field",layout:{x1:400.0,y1:10.0,x2:480.0,y2:20.0},exp:".hakosu",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
-                      {type:"field",layout:{x1:400.0,y1:20.0,x2:480.0,y2:30.0},exp:".suryo",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
-                      {type:"field",layout:{x1:480.0,y1:20.0,x2:560.0,y2:30.0},exp:".tani",halign:"left",valign:"top"},
-                      {type:"field",layout:{x1:560.0,y1:10.0,x2:640.0,y2:20.0},exp:".genka",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d10",valign:"top"},
-                      {type:"field",layout:{x1:560.0,y1:20.0,x2:640.0,y2:30.0},exp:".tanka",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d10",valign:"top"},
-                      {type:"field",layout:{x1:640.0,y1:10.0,x2:720.0,y2:20.0},exp:".genkagaku",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d10",valign:"top"},
-                      {type:"field",layout:{x1:640.0,y1:20.0,x2:720.0,y2:30.0},exp:".kingaku",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d10",valign:"top"}
+                      {type:"line",layout:{x1:0.0,y1:30.0,x2:802.0,y2:30.0},background:true,line_style:"dot",visibility_cond:"(! state.last)"},
+                      {type:"field",layout:{x1:0.0,y1:0.0,x2:80.0,y2:10.0},caption:"売上区分",exp:"(& .uriageKubun ': ' (if (= .uriageKubun 0) '売上' '返品'))",halign:"left",mock:"s10",valign:"top"},
+                      {type:"field",layout:{x1:80.0,y1:0.0,x2:160.0,y2:10.0},caption:"商品コード",exp:".shohinCode",halign:"left",mock:"s10",valign:"top"},
+                      {type:"field",layout:{x1:80.0,y1:10.0,x2:320.0,y2:20.0},caption:"商品名",exp:".shohinName",halign:"left",mock:"w20",valign:"top"},
+                      {type:"field",layout:{x1:320.0,y1:10.0,x2:400.0,y2:20.0},caption:"入数",exp:".irisu",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
+                      {type:"field",layout:{x1:400.0,y1:10.0,x2:480.0,y2:20.0},caption:"箱数",exp:".hakosu",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
+                      {type:"field",layout:{x1:400.0,y1:20.0,x2:480.0,y2:30.0},caption:"数量",exp:".suryo",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
+                      {type:"field",layout:{x1:480.0,y1:20.0,x2:560.0,y2:30.0},caption:"単位",exp:".tani",halign:"left",mock:"w2",valign:"top"},
+                      {type:"field",layout:{x1:560.0,y1:10.0,x2:640.0,y2:20.0},caption:"単位原価",exp:".genka",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d10",valign:"top"},
+                      {type:"field",layout:{x1:560.0,y1:20.0,x2:640.0,y2:30.0},caption:"単価",exp:".tanka",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d10",valign:"top"},
+                      {type:"field",layout:{x1:640.0,y1:10.0,x2:720.0,y2:20.0},caption:"原価",exp:".genkagaku",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d10",valign:"top"},
+                      {type:"field",layout:{x1:640.0,y1:20.0,x2:720.0,y2:30.0},caption:"金額",exp:".kingaku",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d10",valign:"top"}
                     ]
                   }
                 ]
@@ -124,18 +124,18 @@
               },
               caption: "伝票フッタ1",
               elements: [
-                {type:"line",layout:{x1:0.0,y1:0.0,x2:802.0,y2:0.0}},
-                {type:"line",layout:{x1:0.0,y1:30.0,x2:802.0,y2:30.0}},
+                {type:"line",layout:{x1:0.0,y1:0.0,x2:802.0,y2:0.0},background:true},
+                {type:"line",layout:{x1:0.0,y1:30.0,x2:802.0,y2:30.0},background:true},
                 {type:"text",layout:{x1:80.0,y1:0.0,x2:160.0,y2:10.0},halign:"right",text:"税抜金額",valign:"top"},
+                {type:"field",layout:{x1:160.0,y1:0.0,x2:240.0,y2:10.0},caption:"税抜金額",exp:"sum.kingaku",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
                 {type:"text",layout:{x1:240.0,y1:0.0,x2:320.0,y2:10.0},halign:"right",text:"粗利計",valign:"top"},
+                {type:"field",layout:{x1:320.0,y1:0.0,x2:400.0,y2:10.0},caption:"粗利計",exp:"(- sum.kingaku sum.genkagaku)",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
                 {type:"text",layout:{x1:400.0,y1:0.0,x2:480.0,y2:10.0},halign:"right",text:"消費税額",valign:"top"},
+                {type:"field",layout:{x1:480.0,y1:0.0,x2:560.0,y2:10.0},caption:"消費税額",exp:".zeigaku",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
                 {type:"text",layout:{x1:560.0,y1:0.0,x2:640.0,y2:10.0},halign:"right",text:"外税",valign:"top"},
+                {type:"field",layout:{x1:640.0,y1:0.0,x2:720.0,y2:10.0},caption:"外税",exp:".zeigaku",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
                 {type:"text",layout:{x1:560.0,y1:10.0,x2:640.0,y2:20.0},halign:"right",text:"合計",valign:"top"},
-                {type:"field",layout:{x1:160.0,y1:0.0,x2:240.0,y2:10.0},exp:"sum.kingaku",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
-                {type:"field",layout:{x1:320.0,y1:0.0,x2:400.0,y2:10.0},exp:"(- sum.kingaku sum.genkagaku)",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
-                {type:"field",layout:{x1:480.0,y1:0.0,x2:560.0,y2:10.0},exp:".zeigaku",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
-                {type:"field",layout:{x1:640.0,y1:0.0,x2:720.0,y2:10.0},exp:".zeigaku",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
-                {type:"field",layout:{x1:640.0,y1:10.0,x2:720.0,y2:20.0},exp:"(+ .zeigaku sum.kingaku)",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"}
+                {type:"field",layout:{x1:640.0,y1:10.0,x2:720.0,y2:20.0},caption:"合計",exp:"(+ .zeigaku sum.kingaku)",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"}
               ]
             },
             {
