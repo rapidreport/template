@@ -1,0 +1,94 @@
+{
+  version: 0,
+  paper: {
+    landscape: true,
+    margin: {bottom:20.0,left:20.0,right:20.0,top:20.0},
+    scale_unit: "point",
+    type: "a4"
+  },
+  caption: "請求一覧表",
+  font: {size:13.0},
+  group: {
+    contents: [
+      {
+        size: {
+          initial: 150.0
+        },
+        caption: "ヘッダー",
+        every_page: true,
+        elements: [
+          {type:"text",layout:{x1:285.0,y1:5.0,x2:515.0,y2:25.0},distribute:true,font:{name:"gothic",size:20.0,underline:true},halign:"center",text:"請求一覧表",valign:"center"},
+          {type:"field",layout:{x1:85.0,y1:75.0,x2:190.0,y2:95.0},exp:"global.seikyuStartDate",formatter:{format:"yyyy年MM月dd日",type:"default"},mock:"t",valign:"center"},
+          {type:"text",layout:{x1:190.0,y1:75.0,x2:210.0,y2:95.0},halign:"center",text:"～",valign:"center"},
+          {type:"field",layout:{x1:210.0,y1:75.0,x2:315.0,y2:95.0},exp:"global.seikyuEndDate",formatter:{format:"yyyy年MM月dd日",type:"default"},mock:"t",valign:"center"},
+          {type:"text",layout:{x1:645.0,y1:55.0,x2:695.0,y2:75.0},halign:"right",text:"PAGE：",valign:"center"},
+          {type:"text",layout:{x1:695.0,y1:55.0,x2:802.0,y2:75.0},halign:"right",text:"#{page_count}/#{page_count.total}",valign:"center"},
+          {type:"field",layout:{x1:10.0,y1:55.0,x2:285.0,y2:75.0},exp:"global.kaishaName",mock:"w20",valign:"center"},
+          {type:"rect",layout:{x1:10.0,y1:120.0,x2:802.0,y2:150.0}},
+          {type:"line",layout:{x1:285.0,y1:120.0,x2:285.0,y2:150.0}},
+          {type:"line",layout:{x1:360.0,y1:120.0,x2:360.0,y2:150.0}},
+          {type:"text",layout:{x1:10.0,y1:120.0,x2:285.0,y2:135.0},halign:"left",text:"コード",valign:"center"},
+          {type:"text",layout:{x1:10.0,y1:135.0,x2:285.0,y2:150.0},text:"名称",valign:"center"},
+          {type:"text",layout:{x1:285.0,y1:135.0,x2:360.0,y2:150.0},halign:"center",text:"前回締日",valign:"center"},
+          {type:"text",layout:{x1:10.0,y1:95.0,x2:85.0,y2:115.0},text:"締日区分：",valign:"center"},
+          {type:"field",layout:{x1:85.0,y1:95.0,x2:360.0,y2:115.0},exp:"global.shimebiKbn",mock:"w20",valign:"center"},
+          {type:"text",layout:{x1:10.0,y1:75.0,x2:85.0,y2:95.0},text:"請求期間：",valign:"center"},
+          {type:"text",layout:{x1:360.0,y1:135.0,x2:470.0,y2:150.0},halign:"right",text:"前回御請求額",valign:"center"},
+          {type:"text",layout:{x1:470.0,y1:120.0,x2:580.0,y2:135.0},halign:"right",text:"御入金額",valign:"center"},
+          {type:"text",layout:{x1:470.0,y1:135.0,x2:580.0,y2:150.0},halign:"right",text:"調整額",valign:"center"},
+          {type:"text",layout:{x1:580.0,y1:120.0,x2:690.0,y2:135.0},halign:"right",text:"税抜御買上額",valign:"center"},
+          {type:"text",layout:{x1:580.0,y1:135.0,x2:690.0,y2:150.0},halign:"right",text:"消費税額等",valign:"center"},
+          {type:"text",layout:{x1:690.0,y1:135.0,x2:802.0,y2:150.0},halign:"right",text:"今回御請求額",valign:"center"},
+          {type:"line",layout:{x1:470.0,y1:120.0,x2:470.0,y2:150.0}},
+          {type:"line",layout:{x1:580.0,y1:120.0,x2:580.0,y2:150.0}},
+          {type:"line",layout:{x1:690.0,y1:120.0,x2:690.0,y2:150.0}},
+          {id:"__trial__",type:"text",layout:{y2:10},background:true,color:"silver",text:"RapidReport評価版 http://rapidreport.systembase.co.jp/"}
+        ]
+      },
+      {
+        size: {
+          initial: 395.0
+        },
+        aggregate_src: true,
+        caption: "ボディ",
+        elements: [
+          {type:"line",layout:{x1:285.0,y1:0.0,x2:285.0,y2:390.0}},
+          {type:"line",layout:{x1:470.0,y1:0.0,x2:470.0,y2:390.0}},
+          {type:"line",layout:{x1:580.0,y1:0.0,x2:580.0,y2:390.0}},
+          {type:"line",layout:{x1:690.0,y1:0.0,x2:690.0,y2:390.0}},
+          {type:"rect",layout:{x1:10.0,y1:0.0,x2:802.0,y2:390.0}},
+          {type:"line",layout:{x1:360.0,y1:0.0,x2:360.0,y2:390.0}}
+        ],
+        group: {
+          caption: "明細グループ",
+          detail: true,
+          custom_fields: [
+            {key:"sashihikiKurikoshiKingaku",exp:"(- .zenkaiSeikyugaku .nyukingaku .choseigaku)"},
+            {key:"zei",exp:"(rounddown (* .zeinukiKaiagegaku global.zei))"},
+            {key:"konkaiSeikyugaku",exp:"(+ .sashihikiKurikoshiKingaku .zeinukiKaiagegaku .zei)"}
+          ],
+          contents: [
+            {
+              size: {
+                initial: 30.0
+              },
+              caption: "明細",
+              elements: [
+                {type:"field",layout:{x1:285.0,y1:15.0,x2:360.0,y2:30.0},exp:".zenkaiShimebi",formatter:{format:"yyyy/MM/dd",type:"default"},halign:"center",mock:"t",valign:"center",visibility_cond:"state.first"},
+                {type:"field",layout:{x1:360.0,y1:15.0,x2:470.0,y2:30.0},exp:".zenkaiSeikyugaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
+                {type:"field",layout:{x1:470.0,y1:0.0,x2:580.0,y2:15.0},exp:".nyukingaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
+                {type:"field",layout:{x1:470.0,y1:15.0,x2:580.0,y2:30.0},exp:".choseigaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
+                {type:"field",layout:{x1:580.0,y1:0.0,x2:690.0,y2:15.0},exp:".zeinukiKaiagegaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
+                {type:"field",layout:{x1:580.0,y1:15.0,x2:690.0,y2:30.0},exp:".zei",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
+                {type:"field",layout:{x1:10.0,y1:0.0,x2:285.0,y2:15.0},exp:".torihikisakiCode",formatter:{format:"0000",type:"default"}},
+                {type:"field",layout:{x1:10.0,y1:15.0,x2:285.0,y2:30.0},exp:".torihikisakiName",mock:"w20",valign:"center"},
+                {type:"line",layout:{x1:10.0,y1:30.0,x2:800.0,y2:30.0}},
+                {type:"field",layout:{x1:692.0,y1:15.0,x2:802.0,y2:30.0},exp:".konkaiSeikyugaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"}
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
