@@ -5,6 +5,7 @@
     scale_unit: "point",
     type: "a4"
   },
+  caption: "見積書",
   font: {name:"mincho"},
   custom_fields: [
     {key:"kingaku",exp:"(* .irisu .hakosu .tanka)"},
