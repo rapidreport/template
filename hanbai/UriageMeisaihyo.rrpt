@@ -22,30 +22,30 @@
         elements: [
           {type:"text",layout:{x1:285.0,y1:5.0,x2:515.0,y2:25.0},distribute:true,font:{name:"gothic",size:20.0,underline:true},halign:"center",text:"売上明細表",valign:"center"},
           {type:"text",layout:{x1:250.0,y1:40.0,x2:325.0,y2:55.0},text:"集計期間：",valign:"center"},
-          {type:"field",layout:{x1:325.0,y1:40.0,x2:430.0,y2:55.0},exp:"global.shukeiStartDate",formatter:{format:"yyyy年MM月dd日",type:"default"},mock:"t",valign:"center"},
+          {type:"field",layout:{x1:325.0,y1:40.0,x2:430.0,y2:55.0},caption:"集計期間開始",exp:"global.shukeiStartDate",formatter:{format:"yyyy年MM月dd日",type:"default"},mock:"t",valign:"center"},
           {type:"text",layout:{x1:430.0,y1:40.0,x2:450.0,y2:55.0},halign:"center",text:"～",valign:"center"},
-          {type:"field",layout:{x1:450.0,y1:40.0,x2:555.0,y2:55.0},exp:"global.shukeiEndDate",formatter:{format:"yyyy年MM月dd日",type:"default"},mock:"t",valign:"center"},
-          {type:"text",layout:{x1:645.0,y1:55.0,x2:695.0,y2:75.0},halign:"right",text:"PAGE：",valign:"center"},
-          {type:"text",layout:{x1:695.0,y1:55.0,x2:802.0,y2:75.0},halign:"right",text:"#{page_count}/#{page_count.total}",valign:"center"},
-          {type:"field",layout:{x1:10.0,y1:55.0,x2:285.0,y2:75.0},exp:"global.kaishaName",mock:"w20",valign:"center"},
-          {type:"rect",layout:{x1:10.0,y1:120.0,x2:802.0,y2:135.0}},
-          {type:"line",layout:{x1:85.0,y1:120.0,x2:85.0,y2:135.0}},
-          {type:"line",layout:{x1:145.0,y1:120.0,x2:145.0,y2:135.0}},
-          {type:"line",layout:{x1:220.0,y1:120.0,x2:220.0,y2:135.0}},
-          {type:"line",layout:{x1:495.0,y1:120.0,x2:495.0,y2:135.0}},
-          {type:"line",layout:{x1:595.0,y1:120.0,x2:595.0,y2:135.0}},
-          {type:"line",layout:{x1:695.0,y1:120.0,x2:695.0,y2:135.0}},
-          {type:"text",layout:{x1:10.0,y1:120.0,x2:85.0,y2:135.0},halign:"center",text:"売上日付",valign:"center"},
-          {type:"text",layout:{x1:85.0,y1:120.0,x2:145.0,y2:135.0},text:"伝票No.",valign:"center"},
-          {type:"text",layout:{x1:145.0,y1:120.0,x2:220.0,y2:135.0},text:"コード",valign:"center"},
-          {type:"text",layout:{x1:220.0,y1:120.0,x2:495.0,y2:135.0},text:"名称",valign:"center"},
-          {type:"text",layout:{x1:495.0,y1:120.0,x2:595.0,y2:135.0},halign:"right",text:"単価",valign:"center"},
-          {type:"text",layout:{x1:595.0,y1:120.0,x2:695.0,y2:135.0},halign:"right",text:"数量",valign:"center"},
-          {type:"text",layout:{x1:695.0,y1:120.0,x2:802.0,y2:135.0},halign:"right",text:"金額",valign:"center"},
-          {type:"text",layout:{x1:10.0,y1:95.0,x2:85.0,y2:115.0},text:"伝票区分：",valign:"center"},
-          {type:"field",layout:{x1:85.0,y1:95.0,x2:360.0,y2:115.0},exp:"global.denpyoKbn",mock:"w20",valign:"center"},
+          {type:"field",layout:{x1:450.0,y1:40.0,x2:555.0,y2:55.0},caption:"集計期間終了",exp:"global.shukeiEndDate",formatter:{format:"yyyy年MM月dd日",type:"default"},mock:"t",valign:"center"},
+          {type:"field",layout:{x1:10.0,y1:55.0,x2:360.0,y2:75.0},caption:"会社名",exp:"global.kaishaName",mock:"w20",valign:"center"},
+          {type:"text",layout:{x1:635.0,y1:55.0,x2:695.0,y2:75.0},halign:"right",text:"ページ：",valign:"center"},
+          {type:"text",layout:{x1:695.0,y1:55.0,x2:802.0,y2:75.0},caption:"ページ",halign:"right",text:"#{page_count}/#{page_count.total}",valign:"center"},
           {type:"text",layout:{x1:10.0,y1:75.0,x2:85.0,y2:95.0},text:"集計範囲：",valign:"center"},
-          {type:"field",layout:{x1:85.0,y1:75.0,x2:360.0,y2:95.0},exp:"global.shukeiHani",mock:"w20",valign:"center"},
+          {type:"field",layout:{x1:85.0,y1:75.0,x2:360.0,y2:95.0},caption:"集計範囲",exp:"global.shukeiHani",mock:"w20",valign:"center"},
+          {type:"text",layout:{x1:10.0,y1:95.0,x2:85.0,y2:115.0},text:"伝票区分：",valign:"center"},
+          {type:"field",layout:{x1:85.0,y1:95.0,x2:360.0,y2:115.0},caption:"伝票区分",exp:"global.denpyoKbn",mock:"w20",valign:"center"},
+          {type:"rect",layout:{x1:10.0,y1:120.0,x2:802.0,y2:135.0},background:true},
+          {type:"text",layout:{x1:10.0,y1:120.0,x2:85.0,y2:135.0},halign:"center",text:"売上日付",valign:"center"},
+          {type:"line",layout:{x1:85.0,y1:120.0,x2:85.0,y2:135.0},background:true},
+          {type:"text",layout:{x1:85.0,y1:120.0,x2:145.0,y2:135.0},text:"伝票No",valign:"center"},
+          {type:"line",layout:{x1:145.0,y1:120.0,x2:145.0,y2:135.0},background:true},
+          {type:"text",layout:{x1:145.0,y1:120.0,x2:220.0,y2:135.0},text:"コード",valign:"center"},
+          {type:"line",layout:{x1:220.0,y1:120.0,x2:220.0,y2:135.0},background:true},
+          {type:"text",layout:{x1:220.0,y1:120.0,x2:495.0,y2:135.0},text:"名称",valign:"center"},
+          {type:"line",layout:{x1:495.0,y1:120.0,x2:495.0,y2:135.0},background:true},
+          {type:"text",layout:{x1:495.0,y1:120.0,x2:595.0,y2:135.0},halign:"right",text:"単価",valign:"center"},
+          {type:"line",layout:{x1:595.0,y1:120.0,x2:595.0,y2:135.0},background:true},
+          {type:"text",layout:{x1:595.0,y1:120.0,x2:695.0,y2:135.0},halign:"right",text:"数量",valign:"center"},
+          {type:"line",layout:{x1:695.0,y1:120.0,x2:695.0,y2:135.0},background:true},
+          {type:"text",layout:{x1:695.0,y1:120.0,x2:802.0,y2:135.0},halign:"right",text:"金額",valign:"center"},
           {id:"__trial__",type:"text",layout:{y2:10},background:true,color:"silver",text:"RapidReport評価版 http://rapidreport.systembase.co.jp/"}
         ]
       },
@@ -56,13 +56,13 @@
         aggregate_src: true,
         caption: "ボディ",
         elements: [
-          {type:"line",layout:{x1:85.0,y1:0.0,x2:85.0,y2:420.0}},
-          {type:"line",layout:{x1:145.0,y1:0.0,x2:145.0,y2:420.0}},
-          {type:"line",layout:{x1:220.0,y1:0.0,x2:220.0,y2:420.0}},
-          {type:"line",layout:{x1:495.0,y1:0.0,x2:495.0,y2:420.0}},
-          {type:"line",layout:{x1:595.0,y1:0.0,x2:595.0,y2:420.0}},
-          {type:"line",layout:{x1:695.0,y1:0.0,x2:695.0,y2:420.0}},
-          {type:"rect",layout:{x1:10.0,y1:0.0,x2:802.0,y2:420.0}}
+          {type:"rect",layout:{x1:10.0,y1:0.0,x2:802.0,y2:420.0},background:true},
+          {type:"line",layout:{x1:85.0,y1:0.0,x2:85.0,y2:420.0},background:true},
+          {type:"line",layout:{x1:145.0,y1:0.0,x2:145.0,y2:420.0},background:true},
+          {type:"line",layout:{x1:220.0,y1:0.0,x2:220.0,y2:420.0},background:true},
+          {type:"line",layout:{x1:495.0,y1:0.0,x2:495.0,y2:420.0},background:true},
+          {type:"line",layout:{x1:595.0,y1:0.0,x2:595.0,y2:420.0},background:true},
+          {type:"line",layout:{x1:695.0,y1:0.0,x2:695.0,y2:420.0},background:true}
         ],
         group: {
           caption: "担当者グループ",
@@ -74,9 +74,9 @@
               },
               caption: "担当ヘッダー",
               elements: [
-                {type:"field",layout:{x1:220.0,y1:0.0,x2:495.0,y2:15.0},exp:".tantoName",mock:"w10",valign:"center"},
-                {type:"line",layout:{x1:10.0,y1:15.0,x2:802.0,y2:15.0}},
-                {type:"field",layout:{x1:145.0,y1:0.0,x2:220.0,y2:15.0},exp:".tantoCode",formatter:{format:"<0000>",type:"default"}}
+                {type:"field",layout:{x1:145.0,y1:0.0,x2:220.0,y2:15.0},caption:"担当者コード",exp:".tantoCode",formatter:{format:"<0000>",type:"default"}},
+                {type:"field",layout:{x1:220.0,y1:0.0,x2:495.0,y2:15.0},caption:"担当者名",exp:".tantoName",mock:"w10",valign:"center"},
+                {type:"line",layout:{x1:10.0,y1:15.0,x2:802.0,y2:15.0},background:true}
               ]
             },
             {
@@ -92,9 +92,9 @@
                     },
                     caption: "取引先ヘッダー",
                     elements: [
-                      {type:"field",layout:{x1:220.0,y1:0.0,x2:495.0,y2:15.0},exp:".torihikisakiName",mock:"w20",valign:"center"},
-                      {type:"line",layout:{x1:10.0,y1:15.0,x2:802.0,y2:15.0}},
-                      {type:"field",layout:{x1:145.0,y1:0.0,x2:220.0,y2:15.0},exp:".torihikisakiCode",formatter:{format:"[0000]",type:"default"}}
+                      {type:"field",layout:{x1:145.0,y1:0.0,x2:220.0,y2:15.0},caption:"取引先コード",exp:".torihikisakiCode",formatter:{format:"[0000]",type:"default"}},
+                      {type:"field",layout:{x1:220.0,y1:0.0,x2:495.0,y2:15.0},caption:"取引先名",exp:".torihikisakiName",mock:"w20",valign:"center"},
+                      {type:"line",layout:{x1:10.0,y1:15.0,x2:802.0,y2:15.0},background:true}
                     ]
                   },
                   {
@@ -118,13 +118,13 @@
                                 aggregate_src: true,
                                 caption: "明細",
                                 elements: [
-                                  {type:"field",layout:{x1:10.0,y1:0.0,x2:85.0,y2:15.0},exp:".uriageDate",formatter:{format:"yyyy/MM/dd",type:"default"},halign:"center",mock:"t",valign:"center",visibility_cond:"state.first"},
-                                  {type:"field",layout:{x1:85.0,y1:0.0,x2:145.0,y2:15.0},exp:".denpyoNo",formatter:{format:"00000000",type:"default"},mock:"d8",valign:"center",visibility_cond:"state.first",xls_format:"00000000"},
-                                  {type:"field",layout:{x1:145.0,y1:0.0,x2:220.0,y2:15.0},exp:".shohinCode",mock:"s10",valign:"center"},
-                                  {type:"field",layout:{x1:220.0,y1:0.0,x2:495.0,y2:15.0},exp:".shohinName",mock:"w20",valign:"center"},
-                                  {type:"field",layout:{x1:495.0,y1:0.0,x2:595.0,y2:15.0},exp:".tanka",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
-                                  {type:"field",layout:{x1:595.0,y1:0.0,x2:695.0,y2:15.0},exp:".suryo",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,###"},
-                                  {type:"field",layout:{x1:695.0,y1:0.0,x2:802.0,y2:15.0},exp:".kingaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"}
+                                  {type:"field",layout:{x1:10.0,y1:0.0,x2:85.0,y2:15.0},caption:"売上日付",exp:".uriageDate",formatter:{format:"yyyy/MM/dd",type:"default"},halign:"center",mock:"t",valign:"center",visibility_cond:"state.first"},
+                                  {type:"field",layout:{x1:85.0,y1:0.0,x2:145.0,y2:15.0},caption:"伝票No",exp:".denpyoNo",formatter:{format:"00000000",type:"default"},mock:"d8",valign:"center",visibility_cond:"state.first",xls_format:"00000000"},
+                                  {type:"field",layout:{x1:145.0,y1:0.0,x2:220.0,y2:15.0},caption:"商品コード",exp:".shohinCode",mock:"s10",valign:"center"},
+                                  {type:"field",layout:{x1:220.0,y1:0.0,x2:495.0,y2:15.0},caption:"商品名",exp:".shohinName",mock:"w20",valign:"center"},
+                                  {type:"field",layout:{x1:495.0,y1:0.0,x2:595.0,y2:15.0},caption:"単価",exp:".tanka",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
+                                  {type:"field",layout:{x1:595.0,y1:0.0,x2:695.0,y2:15.0},caption:"数量",exp:".suryo",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d8",valign:"center",xls_format:"#,###"},
+                                  {type:"field",layout:{x1:695.0,y1:0.0,x2:802.0,y2:15.0},caption:"金額",exp:".kingaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"}
                                 ]
                               }
                             ]
@@ -139,7 +139,7 @@
                           visibility_cond: "(> count 1)",
                           elements: [
                             {type:"text",layout:{x1:595.0,y1:0.0,x2:695.0,y2:15.0},halign:"right",text:"【伝票計】",valign:"center"},
-                            {type:"field",layout:{x1:695.0,y1:0.0,x2:802.0,y2:15.0},exp:"sum.kingaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"}
+                            {type:"field",layout:{x1:695.0,y1:0.0,x2:802.0,y2:15.0},caption:"伝票計",exp:"sum.kingaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"}
                           ]
                         },
                         {
@@ -148,7 +148,7 @@
                           },
                           caption: "伝票フッター2",
                           elements: [
-                            {type:"line",layout:{x1:10.0,y1:0.0,x2:802.0,y2:0.0}}
+                            {type:"line",layout:{x1:10.0,y1:0.0,x2:802.0,y2:0.0},background:true}
                           ]
                         }
                       ]
@@ -161,11 +161,11 @@
                     caption: "取引先フッター",
                     visibility_cond: "(> count# 1)",
                     elements: [
-                      {type:"field",layout:{x1:695.0,y1:0.0,x2:802.0,y2:15.0},exp:"sum.kingaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
-                      {type:"line",layout:{x1:10.0,y1:15.0,x2:800.0,y2:15.0}},
-                      {type:"field",layout:{x1:220.0,y1:0.0,x2:495.0,y2:15.0},exp:".torihikisakiName",mock:"w20",valign:"center"},
+                      {type:"field",layout:{x1:145.0,y1:0.0,x2:220.0,y2:15.0},caption:"取引先コード",exp:".torihikisakiCode",formatter:{format:"[0000]",type:"default"}},
+                      {type:"field",layout:{x1:220.0,y1:0.0,x2:495.0,y2:15.0},caption:"取引先名",exp:".torihikisakiName",mock:"w20",valign:"center"},
                       {type:"text",layout:{x1:595.0,y1:0.0,x2:695.0,y2:15.0},halign:"right",text:"【取引先計】",valign:"center"},
-                      {type:"field",layout:{x1:145.0,y1:0.0,x2:220.0,y2:15.0},exp:".torihikisakiCode",formatter:{format:"[0000]",type:"default"}}
+                      {type:"field",layout:{x1:695.0,y1:0.0,x2:802.0,y2:15.0},caption:"取引先計",exp:"sum.kingaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
+                      {type:"line",layout:{x1:10.0,y1:15.0,x2:800.0,y2:15.0},background:true}
                     ]
                   }
                 ]
@@ -178,11 +178,11 @@
               caption: "担当フッター",
               visibility_cond: "(> count# 1)",
               elements: [
-                {type:"field",layout:{x1:695.0,y1:0.0,x2:802.0,y2:15.0},exp:"sum.kingaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
-                {type:"field",layout:{x1:220.0,y1:0.0,x2:495.0,y2:15.0},exp:".tantoName",mock:"w10",valign:"center"},
+                {type:"field",layout:{x1:145.0,y1:0.0,x2:220.0,y2:15.0},caption:"担当者コード",exp:".tantoCode",formatter:{format:"<0000>",type:"default"}},
+                {type:"field",layout:{x1:220.0,y1:0.0,x2:495.0,y2:15.0},caption:"担当者名",exp:".tantoName",mock:"w10",valign:"center"},
                 {type:"text",layout:{x1:595.0,y1:0.0,x2:695.0,y2:15.0},halign:"right",text:"【担当者計】",valign:"center"},
-                {type:"field",layout:{x1:145.0,y1:0.0,x2:220.0,y2:15.0},exp:".tantoCode",formatter:{format:"<0000>",type:"default"}},
-                {type:"line",layout:{x1:10.0,y1:15.0,x2:802.0,y2:15.0}}
+                {type:"field",layout:{x1:695.0,y1:0.0,x2:802.0,y2:15.0},caption:"担当者計",exp:"sum.kingaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
+                {type:"line",layout:{x1:10.0,y1:15.0,x2:802.0,y2:15.0},background:true}
               ]
             }
           ]
