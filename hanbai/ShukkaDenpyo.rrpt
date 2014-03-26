@@ -1,0 +1,125 @@
+{
+  version: 0,
+  paper: {
+    landscape: true,
+    margin: {bottom:20.0,left:20.0,right:20.0,top:20.0},
+    scale_unit: "point",
+    type: "a4"
+  },
+  caption: "出荷伝票",
+  font: {name:"mincho"},
+  group: {
+    contents: [
+      {
+        size: {
+          initial: 50.0
+        },
+        caption: "レポートヘッダ",
+        every_page: true,
+        elements: [
+          {type:"text",layout:{x1:295.0,y1:0.0,x2:505.0,y2:20.0},distribute:true,font:{name:"mincho",size:20.0,underline:true},text:"出荷伝票"},
+          {type:"field",layout:{x1:0.0,y1:35.0,x2:210.0,y2:45.0},caption:"会社名",exp:"global.kaishaName",halign:"left",mock:"w20",valign:"top"},
+          {type:"text",layout:{x1:635.0,y1:35.0,x2:695.0,y2:45.0},halign:"right",text:"ページ：",valign:"center"},
+          {type:"text",layout:{x1:695.0,y1:35.0,x2:802.0,y2:45.0},caption:"ページ",halign:"right",text:"#{page_count}/#{page_count.total}",valign:"center"},
+          {id:"__trial__",type:"text",layout:{y2:10},background:true,color:"silver",text:"RapidReport評価版 http://rapidreport.systembase.co.jp/"}
+        ]
+      },
+      {
+        aggregate_src: true,
+        caption: "レポートボディ",
+        group: {
+          caption: "伝票グループ",
+          keys: ["denpyoNo"],
+          contents: [
+            {
+              size: {
+                initial: 60.0
+              },
+              caption: "伝票ヘッダ１",
+              elements: [
+                {type:"line",layout:{x1:0.0,y1:0.0,x2:802.0,y2:0.0},background:true},
+                {type:"text",layout:{x1:0.0,y1:0.0,x2:80.0,y2:10.0},text:"出荷日付",valign:"top"},
+                {type:"field",layout:{x1:80.0,y1:0.0,x2:170.0,y2:10.0},caption:"出荷日付",exp:".shukkaDate",formatter:{format:"yyyy年MM月dd日",type:"default"},mock:"t",valign:"top"},
+                {type:"text",layout:{x1:170.0,y1:0.0,x2:215.0,y2:10.0},text:"伝票No.",valign:"top"},
+                {type:"field",layout:{x1:215.0,y1:0.0,x2:320.0,y2:10.0},caption:"伝票No",exp:".denpyoNo",formatter:{format:"0000",type:"default"},mock:"d4",valign:"top"},
+                {type:"text",layout:{x1:0.0,y1:10.0,x2:80.0,y2:20.0},text:"得意先",valign:"top"},
+                {type:"field",layout:{x1:80.0,y1:10.0,x2:110.0,y2:20.0},caption:"得意先コード",exp:".torihikisakiCode",formatter:{format:"0000",type:"default"},mock:"d4",valign:"top"},
+                {type:"field",layout:{x1:110.0,y1:10.0,x2:320.0,y2:20.0},caption:"得意先名",exp:".torihikisakiName",halign:"left",mock:"w20",valign:"top"},
+                {type:"text",layout:{x1:0.0,y1:20.0,x2:80.0,y2:30.0},text:"得意先担当者",valign:"top"},
+                {type:"field",layout:{x1:80.0,y1:20.0,x2:320.0,y2:30.0},caption:"得意先担当者名",exp:".torihikisakiTantoName",halign:"left",mock:"w10",valign:"top"},
+                {type:"text",layout:{x1:0.0,y1:30.0,x2:80.0,y2:40.0},text:"部門",valign:"top"},
+                {type:"field",layout:{x1:80.0,y1:30.0,x2:110.0,y2:40.0},caption:"部門コード",exp:".bumonCode",formatter:{format:"0000",type:"default"},mock:"d4",valign:"top"},
+                {type:"field",layout:{x1:110.0,y1:30.0,x2:320.0,y2:40.0},caption:"部門名",exp:".bumonName",halign:"left",mock:"w20",valign:"top"},
+                {type:"text",layout:{x1:0.0,y1:40.0,x2:80.0,y2:50.0},text:"担当者",valign:"top"},
+                {type:"field",layout:{x1:80.0,y1:40.0,x2:110.0,y2:50.0},caption:"担当者コード",exp:".tantoCode",formatter:{format:"0000",type:"default"},mock:"d4",valign:"top"},
+                {type:"field",layout:{x1:110.0,y1:40.0,x2:320.0,y2:50.0},caption:"担当者名",exp:".tantoName",halign:"left",mock:"w10",valign:"top"}
+              ]
+            },
+            {
+              size: {
+                initial: 30.0
+              },
+              caption: "伝票ヘッダ2",
+              every_page: true,
+              elements: [
+                {type:"line",layout:{x1:0.0,y1:0.0,x2:802.0,y2:0.0}},
+                {type:"text",layout:{x1:0.0,y1:0.0,x2:80.0,y2:10.0},halign:"left",text:"商品コード",valign:"top"},
+                {type:"text",layout:{x1:0.0,y1:10.0,x2:320.0,y2:20.0},halign:"left",text:"商品名",valign:"top"},
+                {type:"text",layout:{x1:320.0,y1:10.0,x2:400.0,y2:20.0},halign:"right",text:"入数",valign:"top"},
+                {type:"text",layout:{x1:400.0,y1:10.0,x2:480.0,y2:20.0},halign:"right",text:"箱数",valign:"top"},
+                {type:"text",layout:{x1:400.0,y1:20.0,x2:480.0,y2:30.0},halign:"right",text:"数量",valign:"top"},
+                {type:"text",layout:{x1:480.0,y1:20.0,x2:560.0,y2:30.0},halign:"left",text:"単位",valign:"top"},
+                {type:"line",layout:{x1:0.0,y1:30.0,x2:802.0,y2:30.0}}
+              ]
+            },
+            {
+              aggregate_src: true,
+              caption: "伝票ボディ",
+              group: {
+                caption: "明細グループ",
+                detail: true,
+                custom_fields: [
+                  {key:"suryo",exp:"(* .irisu .hakosu)"}
+                ],
+                contents: [
+                  {
+                    size: {
+                      initial: 30.0
+                    },
+                    aggregate_src: true,
+                    caption: "明細",
+                    elements: [
+                      {type:"field",layout:{x1:0.0,y1:0.0,x2:80.0,y2:10.0},caption:"商品コード",exp:".shohinCode",halign:"left",mock:"s10",valign:"top"},
+                      {type:"field",layout:{x1:0.0,y1:10.0,x2:320.0,y2:20.0},caption:"商品名",exp:".shohinName",halign:"left",mock:"w20",valign:"top"},
+                      {type:"field",layout:{x1:320.0,y1:10.0,x2:400.0,y2:20.0},caption:"入数",exp:".irisu",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
+                      {type:"field",layout:{x1:400.0,y1:10.0,x2:480.0,y2:20.0},caption:"箱数",exp:".hakosu",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
+                      {type:"field",layout:{x1:400.0,y1:20.0,x2:480.0,y2:30.0},caption:"数量",exp:".suryo",formatter:{format:"#,##0;▲#,##0",type:"default"},halign:"right",mock:"d8",valign:"top"},
+                      {type:"field",layout:{x1:480.0,y1:20.0,x2:560.0,y2:30.0},caption:"単位",exp:".tani",halign:"left",mock:"w2",valign:"top"},
+                      {type:"line",layout:{x1:0.0,y1:30.0,x2:802.0,y2:30.0},background:true,line_style:"dot",visibility_cond:"(! state.last)"}
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              size: {
+                initial: 0.0
+              },
+              caption: "伝票フッタ1",
+              elements: [
+                {type:"line",layout:{x1:0.0,y1:0.0,x2:802.0,y2:0.0}}
+              ]
+            },
+            {
+              size: {
+                initial: 30.0
+              },
+              caption: "伝票フッタ2",
+              visibility_cond: "(! state.last)"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
