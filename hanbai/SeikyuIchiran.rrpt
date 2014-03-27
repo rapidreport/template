@@ -76,7 +76,7 @@
               elements: [
                 {type:"field",layout:{x1:10.0,y1:0.0,x2:285.0,y2:15.0},caption:"取引先コード",exp:".torihikisakiCode",formatter:{format:"0000",type:"default"}},
                 {type:"field",layout:{x1:10.0,y1:15.0,x2:285.0,y2:30.0},caption:"取引先名",exp:".torihikisakiName",mock:"w20",valign:"center"},
-                {type:"field",layout:{x1:285.0,y1:15.0,x2:360.0,y2:30.0},caption:"前回締日",exp:".zenkaiShimebi",formatter:{format:"yyyy/MM/dd",type:"default"},halign:"center",mock:"t",valign:"center",visibility_cond:"state.first"},
+                {type:"field",layout:{x1:285.0,y1:15.0,x2:360.0,y2:30.0},caption:"前回締日",exp:".zenkaiShimebi",formatter:{format:"yyyy/MM/dd",type:"default"},halign:"center",mock:"t",valign:"center"},
                 {type:"field",layout:{x1:360.0,y1:15.0,x2:470.0,y2:30.0},caption:"前回御請求額",exp:".zenkaiSeikyugaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
                 {type:"field",layout:{x1:470.0,y1:0.0,x2:580.0,y2:15.0},caption:"御入金額",exp:".nyukingaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
                 {type:"field",layout:{x1:470.0,y1:15.0,x2:580.0,y2:30.0},caption:"調整額",exp:".choseigaku",formatter:{format:"#,##0",type:"default"},halign:"right",mock:"d10",valign:"center",xls_format:"#,###"},
